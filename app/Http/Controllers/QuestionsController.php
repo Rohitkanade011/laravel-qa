@@ -28,7 +28,6 @@ class QuestionsController extends Controller
     public function create()
     {
         $question = new Question();
-
         return view('questions.create', compact('question'));
     }
 
@@ -41,7 +40,6 @@ class QuestionsController extends Controller
     public function store(AskQuestionRequest $request)
     {
         $request->user()->questions()->create($request->only('title', 'body'));
- 
         return redirect()->route('questions.index')->with('success', "Your question has been submitted");
     }
 
